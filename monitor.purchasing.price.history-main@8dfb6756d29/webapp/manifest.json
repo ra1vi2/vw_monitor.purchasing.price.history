@@ -1,0 +1,225 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "vwks.nlp.s2p.mm.mntr.price.hist",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "tags": {
+            "keywords": []
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/vwks/NLP_CCTR_PRICE_HISTORY_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "/VWKS/NLP_CCTR_PRICE_HI_ANNO_MDL",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "/VWKS/NLP_CCTR_PRICE_HI_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FVWKS%2FNLP_CCTR_PRICE_HI_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/VWKS/NLP_CCTR_PRICE_HI_ANNO_MDL.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "MCPCService": {
+                "uri": "/sap/opu/odata/sap/MM_PUR_CNTRL_CTR_MAINTAIN_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "offline": false,
+        "sourceTemplate": {
+            "id": "ui5template.smartTemplate",
+            "version": "1.40.12",
+            "toolsId": "38b97059-4b5e-455a-af04-d30e30d86e1c"
+        },
+        "crossNavigation": {
+            "inbounds": {},
+            "outbounds": {
+                "MCPC": {
+                    "semanticObject": "CentralPurchaseContract",
+                    "action": "manage"
+                },
+                "Supplier": {
+                    "semanticObject": "Supplier",
+                    "action": "displayFactSheet"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.90.7",
+            "libs": {
+                "sap.ui.core": {
+                    "lazy": false
+                },
+                "sap.ui.generic.app": {
+                    "lazy": false
+                },
+                "sap.suite.ui.generic.template": {
+                    "lazy": false
+                },
+                "vwks.nlp.s2p.mm.reuse.lib": {
+                    "lazy": false
+                }
+            },
+            "components": {}
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties",
+                "preload": false
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "MCPC": {
+                "dataSource": "MCPCService"
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.viewExtensions": {
+                    "sap.suite.ui.generic.template.AnalyticalListPage.view.AnalyticalListPage": {
+                        "AnalyticalTableColumnsExtension|xVWKSxNLP_C_PRI_HIS_RESULTLISTResults": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "vwks.nlp.s2p.mm.mntr.price.hist.ext.fragment.PriceHistoryCustomColumn",
+                            "type": "XML"
+                        }
+                    }
+                },
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.AnalyticalListPage.view.AnalyticalListPage": {
+                        "controllerName": "vwks.nlp.s2p.mm.mntr.price.hist.ext.controller.AnalyticalListPageExt",
+                        "sap.ui.generic.app": {
+                            "xVWKSxNLP_C_PRI_HIS_RESULTLISTResults": {
+                                "EntitySet": "xVWKSxNLP_C_PRI_HIS_RESULTLISTResults",
+                                "Actions": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "AnalyticalListPage|xVWKSxNLP_C_PRI_HIS_RESULTLISTResults": {
+                "entitySet": "xVWKSxNLP_C_PRI_HIS_RESULTLISTResults",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.AnalyticalListPage",
+                    "list": true,
+                    "settings": {
+                        "chartSettings": {
+                            "showDataLabel": true
+                        },
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        },
+                        "defaultFilterMode": "compact",
+                        "condensedTableLayout": true,
+                        "showGoButtonOnFilterBar": true,
+                        "tableType": "AnalyticalTable",
+                        "autoHide": false,
+                        "smartVariantManagement": false,
+                        "tableSettings": {
+                            "multiSelect": false
+                        },
+                        "keyPerformanceIndicators": {}
+                    }
+                },
+                "pages": {
+                    "ObjectPage|xVWKSxNLP_C_PRI_HIS_RESULTLISTResults": {
+                        "entitySet": "xVWKSxNLP_C_PRI_HIS_RESULTLISTResults",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": ""
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.platform.hcp": {
+        "uri": ""
+    }
+}

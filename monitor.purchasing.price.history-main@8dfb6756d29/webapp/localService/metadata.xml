@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://n1t.onprem:1234/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="VWKS.NLP_CCTR_PRICE_HISTORY_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="xVWKSxNLP_C_PRI_HIS_RESULTLISTResult" sap:semantics="aggregate" sap:label="Price History Analytics Consumption View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="YearWeek" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Year Week"/>
+                <Property Name="ActivePurchasingDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Central Purchase Contract"/>
+                <Property Name="PurchasingDocumentVersion" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Version" sap:quickinfo="Central Contract Version Number"/>
+                <Property Name="CentralPurchaseContractItem" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Central Purchase Contract Item"/>
+                <Property Name="ProcmtHubPlantUniqueID" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension" sap:label="Plant" sap:quickinfo="Plant Unique ID" sap:value-list="standard"/>
+                <Property Name="ProcmtHubContrValidityUUID" Type="Edm.Guid" sap:aggregation-role="dimension" sap:label="Validity ID" sap:quickinfo="Validity ID for the central purchase contract"/>
+                <Property Name="ProcmtHubContrIsCurrentVersion" Type="Edm.Boolean" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="TRUE" sap:quickinfo="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+                <Property Name="CalendarDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Price Calculation Date" sap:quickinfo="Calendar Date"/>
+                <Property Name="formattedpurchasedocitem" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="Central Purchase Contract Item" sap:value-list="standard"/>
+                <Property Name="PurchaseContractType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Contract Type" sap:quickinfo="Central Purchase Contract Type"/>
+                <Property Name="ConditionValidityStartDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Price Change Date from" sap:quickinfo="Valid-From Date"/>
+                <Property Name="ConditionValidityEndDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Price Change Date to" sap:quickinfo="Valid To Date"/>
+                <Property Name="DisplayCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Display Currency" sap:semantics="currency-code"/>
+                <Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Original Contract Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="unitofmeasure" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="UoM" sap:quickinfo="Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="Converted_UOM" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Converted UoM" sap:quickinfo="Converted Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material of External System" sap:value-list="standard"/>
+                <Property Name="PurchaseContractItemText" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short Text"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material Group" sap:value-list="standard"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Purchasing Org." sap:quickinfo="Purchasing Organization" sap:value-list="standard"/>
+                <Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Purchasing Group" sap:value-list="standard"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Vendor's account number" sap:value-list="standard"/>
+                <Property Name="priceunit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Price Unit" sap:quickinfo="Order Price Unit (Purchasing)" sap:semantics="unit-of-measure"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Contract Creation Date" sap:quickinfo="Date"/>
+                <Property Name="CentralPurchaseContract" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="CCTR Number" sap:quickinfo="Purchasing Document Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="FirstDayOfWeekDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Pricing Calculation Date" sap:quickinfo="First day of week date"/>
+                <Property Name="BasePrice" Type="Edm.Decimal" Precision="12" Scale="3" sap:aggregation-role="measure" sap:unit="DisplayCurrency" sap:label="Base Price" sap:quickinfo="Price in reporting currency" sap:filterable="false"/>
+                <Property Name="NetPrice" Type="Edm.Decimal" Precision="12" Scale="3" sap:aggregation-role="measure" sap:unit="DisplayCurrency" sap:label="Net Price" sap:quickinfo="Price in reporting currency" sap:filterable="false"/>
+                <Property Name="EffectivePrice" Type="Edm.Decimal" Precision="14" Scale="3" sap:aggregation-role="measure" sap:unit="DisplayCurrency" sap:label="Effective Price" sap:quickinfo="Effective value of item" sap:filterable="false"/>
+                <Property Name="CalendarYear" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Calendar Year"/>
+                <Property Name="CalendarQuarter" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Calendar Quarter"/>
+                <Property Name="CalendarMonth" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Calendar Month"/>
+                <Property Name="CalendarWeek" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Calendar Week"/>
+                <NavigationProperty Name="Parameters" Relationship="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.assoc_4F2C0A7568CA76C462C9944888CB37BA" FromRole="ToRole_assoc_4F2C0A7568CA76C462C9944888CB37BA" ToRole="FromRole_assoc_4F2C0A7568CA76C462C9944888CB37BA" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xVWKSxNLP_C_PRI_HIS_RESULTLISTParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_Currency"/>
+                    <PropertyRef Name="P_Startdate"/>
+                    <PropertyRef Name="P_Enddate"/>
+                </Key>
+                <Property Name="P_Currency" Type="Edm.String" Nullable="false" DefaultValue="EUR" MaxLength="5" sap:parameter="mandatory" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="P_Startdate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Price From" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="P_Enddate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:parameter="mandatory" sap:label="Price To" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Results" Relationship="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.assoc_4F2C0A7568CA76C462C9944888CB37BA" FromRole="FromRole_assoc_4F2C0A7568CA76C462C9944888CB37BA" ToRole="ToRole_assoc_4F2C0A7568CA76C462C9944888CB37BA"/>
+            </EntityType>
+            <EntityType Name="xVWKSxNLP_I_PRI_HIS_USECASEVHType" sap:label="Value Help for Price History UseCase" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UseCaseID"/>
+                </Key>
+                <Property Name="UseCaseID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="UseCaseText" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="UseCaseText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="C_CntrlContrItmEnhcdValHelpType" sap:label="Central Contract Item Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CentralPurchaseContract"/>
+                    <PropertyRef Name="CentralPurchaseContractItem"/>
+                </Key>
+                <Property Name="CentralPurchaseContract" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Central Purchase Contract"/>
+                <Property Name="CentralPurchaseContractItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Central Purchase Contract Item"/>
+                <Property Name="FormattedPurchasingDocItem" Type="Edm.String" MaxLength="18" sap:label="Central Purchase Contract Item"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group" sap:value-list="standard"/>
+                <Property Name="PurchasingCentralMaterial" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material of External System" sap:value-list="standard"/>
+                <Property Name="PurchaseContractItemText" Type="Edm.String" MaxLength="40" sap:label="Short Text"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purch. organization" sap:quickinfo="Purchasing organization"/>
+                <Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Purchasing Group"/>
+                <Property Name="PurchaseContractType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purchasing Doc. Type" sap:quickinfo="Purchasing Document Type"/>
+                <Property Name="ProcmtHubCompanyCodeGroupingID" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Brand" sap:quickinfo="Grouping ID for Company Codes"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity Start" sap:quickinfo="Start of Validity Period"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity End" sap:quickinfo="End of Validity Period"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:value-list="standard"/>
+                <Property Name="CntrlPurContrStatusCriticality" Type="Edm.Int32" sap:label="Val Status Critic." sap:quickinfo="Central Purchase Contract Validity Status Criticality"/>
+                <Property Name="CntrlPurContrValdtyStatusText" Type="Edm.String" MaxLength="60" sap:label="Validity Status" sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="C_CntrlPurContrFilterMatlGrpVHType" sap:label="VH for CCTR Matl Grp Filter" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MaterialGroup"/>
+                </Key>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9" sap:display-format="UpperCase" sap:text="MaterialGroupName" sap:label="Material Group"/>
+                <Property Name="MaterialGroupText" Type="Edm.String" MaxLength="60" sap:label="Material Group Text" sap:quickinfo="Description of the Material Group"/>
+                <Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20" sap:label="Material Group Description" sap:quickinfo="Product Group Description"/>
+            </EntityType>
+            <EntityType Name="C_CntrlPurContrFilterMatlVHType" sap:label="VH for CCTR Material Filter" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="MaterialName"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="MaterialName" sap:label="Material" sap:quickinfo="Material of External System"/>
+                <Property Name="MaterialName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Material Name" sap:quickinfo="Short Text"/>
+            </EntityType>
+            <EntityType Name="C_MM_CompanyCodeValueHelpType" sap:label="Company Code Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="C_MM_SupplierValueHelpType" sap:label="Supplier" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search term" sap:quickinfo="Sort field"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First name" sap:quickinfo="First name of business partner (person)"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="40" sap:label="Name 1" sap:quickinfo="Name 1 of organization"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="40" sap:label="Name 2" sap:quickinfo="Name 2 of organization"/>
+                <Property Name="OrganizationBPName3" Type="Edm.String" MaxLength="40" sap:label="Name 3" sap:quickinfo="Name 3 of organization"/>
+                <Property Name="OrganizationBPName4" Type="Edm.String" MaxLength="40" sap:label="Name 4" sap:quickinfo="Name 4 of organization"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Vendor account group"/>
+            </EntityType>
+            <EntityType Name="C_ProcmtHubPlantSystemVHType" sap:label="Plants from Connected Systems" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProcurementHubSourceSystem"/>
+                    <PropertyRef Name="ProcmtHubCompanyCode"/>
+                    <PropertyRef Name="ProcmtHubPlant"/>
+                    <PropertyRef Name="ProcmtHubPlantUniqueID"/>
+                </Key>
+                <Property Name="ProcurementHubSourceSystem" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="ProcurementHubSourceSystemName" sap:label="Connected System ID"/>
+                <Property Name="ProcmtHubCompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ProcmtHubCompanyCodeName" sap:label="Conn. Company Code" sap:quickinfo="Connected Company Code"/>
+                <Property Name="ProcmtHubPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ProcmtHubPlantName" sap:label="Connected Plant"/>
+                <Property Name="ProcmtHubPlantUniqueID" Type="Edm.String" Nullable="false" MaxLength="30" sap:text="ProcmtHubPlantName" sap:label="Plant Unique ID"/>
+                <Property Name="ProcmtHubCompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ProcmtHubPlantName" Type="Edm.String" MaxLength="30" sap:label="Plant Name"/>
+                <Property Name="ProcurementHubSourceSystemName" Type="Edm.String" MaxLength="30" sap:label="Connected Sys Name" sap:quickinfo="Connected System Name"/>
+            </EntityType>
+            <EntityType Name="C_PurchasingGroupValueHelpType" sap:label="Purchasing Group Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchasingGroup"/>
+                </Key>
+                <Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="PurchasingGroupName" sap:label="Purchasing Group"/>
+                <Property Name="PurchasingGroupName" Type="Edm.String" MaxLength="18" sap:label="Purchasing Grp. Name" sap:quickinfo="Purchasing Group Name"/>
+                <Property Name="PurchasingGroupPhoneNumber" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Tel. No. of Purchasing Grp." sap:quickinfo="Telephone number of purchasing group (buyer group)"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Tel. No. with Dialing Code" sap:quickinfo="Telephone no.: dialling code+number"/>
+                <Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Extension" sap:quickinfo="Telephone no.: Extension"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax" sap:quickinfo="Fax number of purchasing (buyer) group"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:label="Email Address" sap:quickinfo="E-Mail Address" sap:semantics="email"/>
+            </EntityType>
+            <EntityType Name="C_PurchasingOrgValueHelpType" sap:label="Purchasing Organization" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PurchasingOrganization"/>
+                </Key>
+                <Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PurchasingOrganizationName" sap:label="Purchasing Organization"/>
+                <Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20" sap:label="Purchasing Organization Name"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_CompanyCodeStdVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_CurrencyType" sap:label="Currency" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Currency_Text" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/>
+                <Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Currency Code"/>
+                <Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key"/>
+                <Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary" sap:quickinfo="Primary SAP Currency Code for ISO Code"/>
+            </EntityType>
+            <Association Name="assoc_4F2C0A7568CA76C462C9944888CB37BA" sap:content-version="1">
+                <End Type="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTParameters" Multiplicity="1" Role="FromRole_assoc_4F2C0A7568CA76C462C9944888CB37BA"/>
+                <End Type="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult" Multiplicity="*" Role="ToRole_assoc_4F2C0A7568CA76C462C9944888CB37BA"/>
+            </Association>
+            <EntityContainer Name="VWKS_NLP_CCTR_PRICE_HISTORY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xVWKSxNLP_C_PRI_HIS_RESULTLISTResults" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="xVWKSxNLP_C_PRI_HIS_RESULTLIST" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="xVWKSxNLP_I_PRI_HIS_USECASEVH" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_I_PRI_HIS_USECASEVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="C_CntrlContrItmEnhcdValHelp" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlContrItmEnhcdValHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_CntrlPurContrFilterMatlGrpVH" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlPurContrFilterMatlGrpVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_CntrlPurContrFilterMatlVH" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlPurContrFilterMatlVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_MM_CompanyCodeValueHelp" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_MM_CompanyCodeValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_MM_SupplierValueHelp" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_MM_SupplierValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_ProcmtHubPlantSystemVH" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_ProcmtHubPlantSystemVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="C_PurchasingGroupValueHelp" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_PurchasingGroupValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="C_PurchasingOrgValueHelp" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_PurchasingOrgValueHelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeStdVH" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.I_CompanyCodeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Currency" EntityType="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_4F2C0A7568CA76C462C9944888CB37BA" Association="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.assoc_4F2C0A7568CA76C462C9944888CB37BA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xVWKSxNLP_C_PRI_HIS_RESULTLIST" Role="FromRole_assoc_4F2C0A7568CA76C462C9944888CB37BA"/>
+                    <End EntitySet="xVWKSxNLP_C_PRI_HIS_RESULTLISTResults" Role="ToRole_assoc_4F2C0A7568CA76C462C9944888CB37BA"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/ProcmtHubPlantUniqueID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plants from Connected Systems"/>
+                        <PropertyValue Property="CollectionPath" String="C_ProcmtHubPlantSystemVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ProcmtHubPlantUniqueID"/>
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubPlantUniqueID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcurementHubSourceSystem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubCompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubPlant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubCompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubPlantName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcurementHubSourceSystemName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/formattedpurchasedocitem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Central Contract Item Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="C_CntrlContrItmEnhcdValHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormattedPurchasingDocItem"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingGroup"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingCentralMaterial"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchaseContractItemText"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProcmtHubCompanyCodeGroupingID"/>
+                                    <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CntrlPurContrValdtyStatusText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="formattedpurchasedocitem"/>
+                                    <PropertyValue Property="ValueListProperty" String="FormattedPurchaseDocItem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CentralPurchaseContract"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CentralPurchaseContractItem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchaseContractType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValidityStartDate"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValidityEndDate"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="VH for CCTR Material Filter"/>
+                        <PropertyValue Property="CollectionPath" String="C_CntrlPurContrFilterMatlVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/MaterialGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="VH for CCTR Matl Grp Filter"/>
+                        <PropertyValue Property="CollectionPath" String="C_CntrlPurContrFilterMatlGrpVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="C_MM_CompanyCodeValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/PurchasingOrganization" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Purchasing Organization"/>
+                        <PropertyValue Property="CollectionPath" String="C_PurchasingOrgValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingOrganization"/>
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingOrganizationName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/PurchasingGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Purchasing Group Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="C_PurchasingGroupValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingGroupName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PurchasingGroupPhoneNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PhoneNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PhoneNumberExtension"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FaxNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Supplier"/>
+                        <PropertyValue Property="CollectionPath" String="C_MM_SupplierValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.xVWKSxNLP_C_PRI_HIS_RESULTLISTParameters/P_Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="I_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="P_Currency"/>
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Decimals"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlContrItmEnhcdValHelpType/MaterialGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="VH for CCTR Matl Grp Filter"/>
+                        <PropertyValue Property="CollectionPath" String="C_CntrlPurContrFilterMatlGrpVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialGroupName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlContrItmEnhcdValHelpType/PurchasingCentralMaterial" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="VH for CCTR Material Filter"/>
+                        <PropertyValue Property="CollectionPath" String="C_CntrlPurContrFilterMatlVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingCentralMaterial"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlContrItmEnhcdValHelpType/Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Supplier"/>
+                        <PropertyValue Property="CollectionPath" String="C_MM_SupplierValueHelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Region"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_MM_SupplierValueHelpType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.VWKS_NLP_CCTR_PRICE_HISTORY_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.VWKS_NLP_CCTR_PRICE_HISTORY_SRV_Entities/xVWKSxNLP_C_PRI_HIS_RESULTLIST" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_Currency</PropertyPath>
+                                <PropertyPath>P_Startdate</PropertyPath>
+                                <PropertyPath>P_Enddate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_Currency</PropertyPath>
+                                <PropertyPath>P_Startdate</PropertyPath>
+                                <PropertyPath>P_Enddate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.VWKS_NLP_CCTR_PRICE_HISTORY_SRV_Entities/xVWKSxNLP_C_PRI_HIS_RESULTLISTResults" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>BasePrice</PropertyPath>
+                                <PropertyPath>NetPrice</PropertyPath>
+                                <PropertyPath>EffectivePrice</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_CntrlPurContrFilterMatlGrpVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>MaterialGroup</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_MM_CompanyCodeValueHelpType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CompanyCode</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_MM_SupplierValueHelpType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CompanyCode</PropertyPath>
+                        <PropertyPath>Supplier</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_ProcmtHubPlantSystemVHType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>ProcmtHubPlant</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_PurchasingGroupValueHelpType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>PurchasingGroup</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.C_PurchasingOrgValueHelpType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>PurchasingOrganization</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="VWKS.NLP_CCTR_PRICE_HISTORY_SRV.I_CurrencyType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.UnitSpecificScale" Path="Decimals"/>
+            </Annotations>
+            <atom:link rel="self" href="https://n1t.onprem:1234/sap/opu/odata/vwks/NLP_CCTR_PRICE_HISTORY_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://n1t.onprem:1234/sap/opu/odata/vwks/NLP_CCTR_PRICE_HISTORY_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

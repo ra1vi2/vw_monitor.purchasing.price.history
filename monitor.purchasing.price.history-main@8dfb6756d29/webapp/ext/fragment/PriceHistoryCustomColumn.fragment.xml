@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+          xmlns="sap.m" xmlns:table="sap.ui.table">          
+    <!-- Central Purchase Contract -->
+    <table:AnalyticalColumn id="idFormattedPurchasingDocItemColumn" width="230px" autoResizable="true" leadingProperty="FormattedPurchasingDocItem">
+        <Label id="idDocItemLabel" text="{/#xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/FormattedPurchasingDocItem/@sap:label}"/>
+        <table:template>
+            <Link id="idDocItemLink" text="{FormattedPurchasingDocItem}" press="handleContractItemPress"/>
+        </table:template>
+            <table:customData>
+                <core:CustomData key="p13nData"
+                      value='\{"columnKey": "FormattedPurchasingDocItem", "columnIndex" : "0"}' />
+            </table:customData>
+    </table:AnalyticalColumn>
+    <!-- Supplier -->
+    <table:AnalyticalColumn id="idSupplierColumn" width="230px" autoResizable="true" leadingProperty="Supplier">
+        <Label id="idSupplierLabel" text="{/#xVWKSxNLP_C_PRI_HIS_RESULTLISTResult/Supplier/@sap:label}"/>
+        <table:template>
+            <Link id="idSupplierLink" text="{SupplierName} ({Supplier})" visible="{= !!${Supplier}}" press="handleSupplierPress"/>
+        </table:template>
+            <table:customData>
+                <core:CustomData key="p13nData"
+                      value='\{"columnKey": "Supplier", "additionalProperty": "SupplierName", "columnIndex" : "15"}' />
+            </table:customData>
+    </table:AnalyticalColumn>
+</core:FragmentDefinition>
